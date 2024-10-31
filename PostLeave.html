@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ProfileAndNotification.css">
+    <style>
+        .MainContent {
+            /* border: 2px solid red; */
+            height: 100%;
+            width: 100%;
+            background-color: white;
+            border-radius: 15px 15px 0px 0px;
+        }
+
+        .addclass {
+            border-radius: 15px 15px 0px 0px;
+            background-color: white;
+            /* border: 2px solid red; */
+            /* height: 22rem; */
+            width: 100%;
+            gap: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Center contents */
+            padding: 0.5rem;
+        }
+
+        .form1 {
+            /* border: 2px solid black; */
+            width: 48%;
+            height: auto;
+            /* Adjust to fit content */
+            padding: 1.5rem 0.5rem 0rem 0.5rem; 
+        }
+
+        .form1 label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: bold;
+        }
+
+        .Fcls {
+
+            width: 100%;
+            /* Make inputs take full width */
+            padding: 0.5rem;
+            /* Add padding to inputs */
+            margin-bottom: 1rem;
+            /* Add margin below inputs */
+            border: 1px solid #2a2a2a;
+            /* Add border */
+            border-radius: 0.4rem;
+            /* Rounded corners */
+        }
+
+        form {
+
+            border-collapse: none;
+            height: 80%;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            /* Wrap fields on small screens */
+            justify-content: space-between;
+            /* Space out fields */
+            width: 100%;
+            margin-bottom: 0.8rem;
+            /* Add margin to the bottom */
+            flex-direction: row;
+        }
+
+        .adclassbtn {
+
+            background-color: #0096FF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.6rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            height: 2rem;
+            width: 9rem;
+            margin-top: -2rem;
+
+        }
+
+        .adclassbtn span {
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .adclassbtn:hover {
+            background-color: #007BFF;
+            /* Hover color */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            /* Hover shadow */
+        }
+
+        .adclassbtn:active {
+            background-color: #0056b3;
+            box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+            transform: translateY(1px);
+        }
+
+        input:focus,
+        textarea:focus {
+            box-shadow: 6px 11px 14px rgba(0, 0, 0, 0.1);
+            outline: none;
+            border: 2px solid rgb(0, 0, 0);
+        }
+
+        .postnote {
+            /* border: 2px solid blue; */
+            height: auto;
+            width: 100%;
+            margin-top: -3rem;
+            margin-left: 0px;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+#leaveReason{
+    margin-left: -8px;
+}
+        .cllist {
+            
+            width: 100%;
+            display: flex;
+            /* justify-content: center; */
+            /* align-items: center; */
+            height: 80%;
+            /* Adjusted height to fit within container */
+            overflow-y: auto;
+            /* Makes the class list scrollable */
+          height: 400px;
+            /* Adjust height to suit your design */
+            overflow-y: auto;
+            /* Make the list scrollable */
+            padding-bottom: 2rem;
+        }
+
+        .cltable {
+            border: 2px solid rgb(52, 51, 51);
+            background-color: white;
+            width: 90%;
+            margin: 1rem auto;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            border-collapse: collapse;
+            box-shadow: 20px 19px 10px 4px rgba(0, 0, 0, 0.1);
+            /* Enables vertical scrollbar */
+        }
+
+        .cl-li-head {
+            font-weight: 500;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            color: white;
+            background-color: #0096FF;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+
+        }
+
+        .cl-li-head th {
+            font-size: larger;
+            font-weight: bold;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .cl-li-body {
+            font-family: poppins, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande';
+            text-align: left;
+            border-bottom: #fff;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+        }
+
+        .cl-li-body td {
+            padding: 0.75rem 1rem;
+            /* Adds padding for better readability */
+            border-bottom: 1px solid #ddd;
+            /* Light border for rows separation */
+            color: #333;
+            /* Text color for better contrast */
+        }
+
+        .cl-li-body tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+
+        .cl-li-body tr:hover {
+            background-color: #f1f1f1;
+            /* Subtle hover effect */
+            cursor: pointer;
+            /* Pointer cursor to indicate row is clickable */
+            transition: background-color 0.2s ease;
+        }
+        .cl-li-head th:nth-child(4) {
+    width: 40%;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="navbar-container" class="navbar-container"></div>
+
+        <!-- The content of the page goes here -->
+        <div class="sccontainer">
+            <div class="profile">
+                <div class="notification">
+                    <span class="material-symbols-outlined">
+                        notifications_active
+                    </span>
+                </div>
+                <div class="profilepic">
+                    <h3>Shivam Mishra</h3>
+                    <span class="material-symbols-outlined">
+                        keyboard_arrow_down
+                    </span>
+                </div>
+            </div>
+            <div class="MainContent">
+                <div class="addclass">
+                    <form action="">
+                        <div class="form1">
+
+                            <label for="Sname">Teacher Name:</label>
+                            <input class="Fcls" type="textbox" id="Sname" name="Sname" required><br>
+
+
+                            <label for="Tname">Start Date:</label>
+                            <input class="Fcls" type="textbox" id="Stime" name="Stime" required><br>
+                        </div>
+
+                        <div class="form1">
+                            <label for="Department">Department:</label>
+                            <select class="Fcls" id="Department" name="Department" placeholder="Enter Department:">
+                                <option value="6th">IT</option>
+                                <option value="7th">Commerce</option>
+                                <option value="7th">Arts</option>
+                            </select><br>
+                            <label for="Tname">End Date:</label>
+                            <input class="Fcls" type="textbox" id="Etime" name="Etime" required><br>
+                        </div> <br>
+                    </form>
+                    <div class="postnote">
+                        <label id="leaveReason" for="leaveReason">Reason for Leave:</label>
+                        <textarea id="leaveReason" name="leaveReason" class="Fcls" rows="4"
+                            placeholder="Write your reason for leave here..."></textarea>
+                    </div>
+                    <button class="adclassbtn" type="button" onclick=""><span
+                            class="material-symbols-outlined">add</span>
+                        Post Note</button>
+                </div>
+                <div class="cllist">
+                    <table class="cltable">
+                        <thead class="cl-li-head">
+                            <tr>
+                                <th>Teacher's Name</th>
+                                <th>Start date</th>
+                                <th>End date:</th>
+                                <th>Reason</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="cl-li-body">
+                            <tr>
+                                <td>Shaan Mishra</td>
+                                <td>6-10-24</td>
+                                <td>7-10-24</td>
+                                <td>Lorem sint. Quasi error quam maiores voluptate,
+                                    neque non consectetur!</td>
+                                <td><button>Approve</button>
+                                <button>Reject</button></td>
+                            </tr>
+                            <tr>
+                                <td>Shaan Mishra</td>
+                                <td>6-10-24</td>
+                                <td>7-10-24</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad enim repudiandae qui
+                                    pariatur sequi reprehenderit accusamus sint. Quasi error quam maiores voluptate,
+                                    neque non consectetur!</td>
+                                <td><button>Approve</button>
+                                    <button>Reject</button></td>
+                            </tr>
+                            <tr>
+                                <td>Shaan Mishra</td>
+                                <td>6-10-24</td>
+                                <td>7-10-24</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad enim repudiandae qui
+                                    pariatur sequi reprehenderit accusamus sint. Quasi error quam maiores voluptate,
+                                    neque non consectetur!</td>
+                                <td><button>Approve</button>
+                                    <button>Reject</button></td>
+                            </tr>
+                            <tr>
+                                <td>Shaan Mishra</td>
+                                <td>6-10-24</td>
+                                <td>7-10-24</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad enim repudiandae qui
+                                    pariatur sequi reprehenderit accusamus sint. Quasi error quam maiores voluptate,
+                                    neque non consectetur!</td>
+                                <td><button>Approve</button>
+                                    <button>Reject</button></td>
+                            </tr>
+                            <tr>
+                                <td>Shaan Mishra</td>
+                                <td>6-10-24</td>
+                                <td>7-10-24</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad enim repudiandae qui
+                                    pariatur sequi reprehenderit accusamus sint. Quasi error quam maiores voluptate,
+                                    neque non consectetur!</td>
+                                <td><button>Approve</button>
+                                    <button>Reject</button></td>
+
+                            </tr>
+                            <tr>
+                                <td>Shaan Mishra</td>
+                                <td>6-10-24</td>
+                                <td>7-10-24</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad enim repudiandae qui
+                                    pariatur sequi reprehenderit accusamus sint. Quasi error quam maiores voluptate,
+                                    neque non consectetur!</td>
+                                <td><button>Approve</button>
+                                    <button>Reject</button></td>
+                            </tr>
+                            <tr>
+                                <td>Shaan Mishra</td>
+                                <td>6-10-24</td>
+                                <td>7-10-24</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad enim repudiandae qui
+                                    pariatur sequi reprehenderit accusamus sint. Quasi error quam maiores voluptate,
+                                    neque non consectetur!</td>
+                                <td><button>Approve</button>
+                                    <button>Reject</button></td>
+
+                            </tr>
+                            <tr>
+                                <td>Shaan Mishra</td>
+                                <td>6-10-24</td>
+                                <td>7-10-24</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad enim repudiandae qui
+                                    pariatur sequi reprehenderit accusamus sint. Quasi error quam maiores voluptate,
+                                    neque non consectetur!</td>
+                                <td><button>Approve</button>
+                                    <button>Reject</button></td>
+                            </tr> <tr>
+                                <td>Shaan Mishra</td>
+                                <td>6-10-24</td>
+                                <td>7-10-24</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad enim repudiandae qui
+                                    pariatur sequi reprehenderit accusamus sint. Quasi error quam maiores voluptate,
+                                    neque non consectetur!</td>
+                                <td><button>Approve</button>
+                                    <button>Reject</button></td>
+                            </tr>
+                            <tr>
+                                <td>Shaan Mishra</td>
+                                <td>6-10-24</td>
+                                <td>7-10-24</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad enim repudiandae qui
+                                    pariatur sequi reprehenderit accusamus sint. Quasi error quam maiores voluptate,
+                                    neque non consectetur!</td>
+                                <td><button>Approve</button>
+                                    <button>Reject</button></td>
+                            </tr> 
+                                <td>Shaan Mishra</td>
+                                <td>6-10-24</td>
+                                <td>7-10-24</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad enim repudiandae qui
+                                    pariatur sequi reprehenderit accusamus sint. Quasi error quam maiores voluptate,
+                                    neque non consectetur!</td>
+                                <td><button>Approve</button>
+                                    <button>Reject</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Load the navbar
+                fetch("navbar.html")
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById("navbar-container").innerHTML = data;
+
+                        // After loading the navbar, highlight the active link
+                        const currentPage = window.location.pathname.split("/").pop();
+                        const links = document.querySelectorAll('.sidebar a');
+
+                        links.forEach(link => {
+                            const linkPage = link.getAttribute('href');
+                            if (linkPage === currentPage) {
+                                link.classList.add('active');
+                            } else {
+                                link.classList.remove('active');
+                            }
+                        });
+                    })
+                    .catch(error => console.error('Error loading navbar:', error));
+            });
+
+        </script>
+</body>
+
+</html>
